@@ -1,0 +1,2 @@
+# omnifj.github.io
+omnifjのBlog
