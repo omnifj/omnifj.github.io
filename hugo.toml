@@ -59,6 +59,11 @@ defaultContentLanguageInSubdir = false
         name = "关于"
         url = "/about/"
         weight = 30
+      [[languages.zh.menu.main]]
+        identifier = "friends"
+        name = "链接"
+        url = "/friends/"
+        weight = 40
 
   [languages.en]
     locale = "en-US"
@@ -90,3 +95,8 @@ defaultContentLanguageInSubdir = false
         name = "About"
         url = "/about/"
         weight = 30
+      [[languages.en.menu.main]]
+        identifier = "friends"
+        name = "Friends"
+        url = "/friends/"
+        weight = 40
