@@ -38,6 +38,10 @@ defaultContentLanguageInSubdir = false
   name = "github"
   url = "https://github.com/omnifj"
 
+[[params.socialIcons]]
+  name = "email"
+  url = "mailto:omnivue666@gmail.com"
+
 [languages]
   [languages.zh]
     locale = "zh-CN"
