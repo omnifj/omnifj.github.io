@@ -1,4 +1,4 @@
-baseURL = "https://omnifj.com/"
+baseURL = "https://omnifj.github.io/"
 locale = "zh-cn"
 title = "omnifj's Blog"
 theme = "PaperMod"
