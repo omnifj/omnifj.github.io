@@ -7,6 +7,9 @@ enableGitInfo = true
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [sitemap]
   changefreq = "weekly"
   priority = 0.5
@@ -23,6 +26,13 @@ defaultContentLanguageInSubdir = false
   ShowCodeCopyButtons = true
   ShowToc = true
   TocOpen = false
+
+[params.assets]
+  favicon = "favicon.svg"
+  favicon16x16 = "favicon.svg"
+  favicon32x32 = "favicon.svg"
+  apple_touch_icon = "favicon.svg"
+  safari_pinned_tab = "favicon.svg"
 
 [[params.socialIcons]]
   name = "github"
@@ -50,10 +60,20 @@ defaultContentLanguageInSubdir = false
         url = "/posts/"
         weight = 10
       [[languages.zh.menu.main]]
+        identifier = "archives"
+        name = "归档"
+        url = "/archives/"
+        weight = 15
+      [[languages.zh.menu.main]]
         identifier = "tags"
         name = "标签"
         url = "/tags/"
         weight = 20
+      [[languages.zh.menu.main]]
+        identifier = "search"
+        name = "搜索"
+        url = "/search/"
+        weight = 25
       [[languages.zh.menu.main]]
         identifier = "about"
         name = "关于"
@@ -86,10 +106,20 @@ defaultContentLanguageInSubdir = false
         url = "/posts/"
         weight = 10
       [[languages.en.menu.main]]
+        identifier = "archives"
+        name = "Archives"
+        url = "/archives/"
+        weight = 15
+      [[languages.en.menu.main]]
         identifier = "tags"
         name = "Tags"
         url = "/tags/"
         weight = 20
+      [[languages.en.menu.main]]
+        identifier = "search"
+        name = "Search"
+        url = "/search/"
+        weight = 25
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
