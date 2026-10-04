@@ -3,8 +3,16 @@ locale = "zh-cn"
 title = "omnifj's Blog"
 theme = "PaperMod"
 enableRobotsTXT = true
+enableGitInfo = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
 [params]
+  env = "production"
+  keywords = ["技术博客", "omnifj", "编程", "软件工程"]
   description = "记录技术、阅读与生活"
   author = "omnifj"
   defaultTheme = "auto"
