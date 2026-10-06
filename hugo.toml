@@ -1,9 +1,11 @@
 baseURL = "https://omnifj.github.io/"
-locale = "zh-cn"
 title = "omnifj's Blog"
 theme = "PaperMod"
 enableRobotsTXT = true
 enableGitInfo = true
+
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
 
 [sitemap]
   changefreq = "weekly"
@@ -13,8 +15,6 @@ enableGitInfo = true
 [params]
   env = "production"
   keywords = ["技术博客", "omnifj", "编程", "软件工程"]
-  description = "记录技术、阅读与生活"
-  author = "omnifj"
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = true
@@ -24,27 +24,69 @@ enableGitInfo = true
   ShowToc = true
   TocOpen = false
 
-[params.homeInfoParams]
-  Title = "欢迎来到我的博客"
-  Content = "这里记录技术、阅读与生活。"
-
 [[params.socialIcons]]
   name = "github"
   url = "https://github.com/omnifj"
 
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    name = "文章"
-    url = "/posts/"
-    weight = 10
-  [[menu.main]]
-    identifier = "tags"
-    name = "标签"
-    url = "/tags/"
-    weight = 20
-  [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
-    weight = 30
+[languages]
+  [languages.zh]
+    locale = "zh-CN"
+    label = "简体中文"
+    weight = 1
+    title = "omnifj's Blog"
+
+    [languages.zh.params]
+      description = "记录技术、阅读与生活"
+      author = "omnifj"
+
+    [languages.zh.params.homeInfoParams]
+      Title = "欢迎来到我的博客"
+      Content = "这里记录技术、阅读与生活。"
+
+    [languages.zh.menu]
+      [[languages.zh.menu.main]]
+        identifier = "posts"
+        name = "文章"
+        url = "/posts/"
+        weight = 10
+      [[languages.zh.menu.main]]
+        identifier = "tags"
+        name = "标签"
+        url = "/tags/"
+        weight = 20
+      [[languages.zh.menu.main]]
+        identifier = "about"
+        name = "关于"
+        url = "/about/"
+        weight = 30
+
+  [languages.en]
+    locale = "en-US"
+    label = "English"
+    weight = 2
+    title = "omnifj's Blog"
+
+    [languages.en.params]
+      description = "Tech, reading and life"
+      author = "omnifj"
+
+    [languages.en.params.homeInfoParams]
+      Title = "Welcome to my blog"
+      Content = "Notes on tech, reading and life."
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts/"
+        weight = 10
+      [[languages.en.menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 20
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 30
