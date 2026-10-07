@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Hugo",
+    "url": "https://gohugo.io",
+    "avatar": "https://gohugo.io/favicon.ico",
+    "description": "世界上最快的静态网站生成器",
+    "themeColor": "#ff4088",
+    "note": "本站使用的框架，示例条目，可替换为真实好友"
+  },
+  {
+    "name": "PaperMod",
+    "url": "https://github.com/adityatelange/hugo-PaperMod",
+    "avatar": "",
+    "description": "本站使用的 Hugo 主题",
+    "themeColor": "#2e86de",
+    "note": "示例条目，可替换为真实好友"
+  }
+]
