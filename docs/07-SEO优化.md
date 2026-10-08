@@ -37,7 +37,7 @@ Allow: /
 Sitemap: https://omnifj.github.io/sitemap.xml
 ```
 
-作用：允许所有搜索引擎抓取，并主动告知 sitemap 位置。Sitemap 地址使用 `absURL` 模板函数生成，本地为 omnifj.com 构建时会自动指向 omnifj.com 的 sitemap（双域名各自正确）。
+作用：允许所有搜索引擎抓取，并主动告知 sitemap 位置。Sitemap 地址使用 `absURL` 模板函数生成，始终指向当前 baseURL 下的 sitemap。
 
 ### 4. Sitemap
 
@@ -100,17 +100,9 @@ description: "120~150 字的摘要，包含核心关键词，写清楚读者能�
 
 1. 打开 https://ziyuan.baidu.com
 2. 添加站点，验证方式选「文件验证」，将 HTML 文件放入 `static/`
-3. 提交 sitemap。注意：百度对 GitHub Pages 的抓取不稳定，`omnifj.com` 自有服务器版本收录效果会更好
+3. 提交 sitemap。注意：百度对 GitHub Pages 的抓取不稳定，如将来绑定自有域名和服务器，收录效果会更好
 
-## 四、双域名的 SEO 注意事项
-
-参见 [06-双域名部署](06-双域名部署.md)。两个域名内容完全相同，存在「重复内容」风险：
-
-- 每个构建的 canonical 指向各自 baseURL，搜索引擎会各自收录，权重分散
-- **建议**：确定一个主域名（推荐 omnifj.com，自有域名更利于品牌建设），长期以主域名对外分享、引流
-- 进阶做法（可选）：github.io 版本的页面 canonical 统一指向 omnifj.com，做法是将构建改为 `hugo --minify --baseURL https://omnifj.com/` 再部署到 Pages（URL 会跳转/指向主域名）。需要时再改造
-
-## 五、提升行业影响力的内容策略（SEO 之外）
+## 四、提升行业影响力的内容策略（SEO 之外）
 
 1. **系列化写作**：围绕一个主题写系列文章并互相链接，形成「主题权威」（Topical Authority）
 2. **解决具体问题**：标题即问题（如「Hugo 部署 GitHub Pages 失败的 5 个原因」），长尾搜索流量最精准
@@ -119,7 +111,7 @@ description: "120~150 字的摘要，包含核心关键词，写清楚读者能�
 5. **保持稳定更新频率**：每周 1 篇优于每月突击 4 篇
 6. **衡量效果**：可在 `layouts/_partials/extend_head.html` 中加入 Google Analytics 或百度统计代码
 
-## 六、验证 SEO 是否生效
+## 五、验证 SEO 是否生效
 
 ```bash
 # 构建后检查本地产物
