@@ -1,11 +1,10 @@
 baseURL = "https://omnifj.github.io/"
-title = "omnifj's Blog"
-theme = "PaperMod"
+title = "omnifj"
+languageCode = "zh-CN"
+defaultContentLanguage = "zh"
 enableRobotsTXT = true
 enableGitInfo = true
-
-defaultContentLanguage = "zh"
-defaultContentLanguageInSubdir = false
+paginate = 8
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -16,121 +15,50 @@ defaultContentLanguageInSubdir = false
   filename = "sitemap.xml"
 
 [params]
-  env = "production"
+  description = "记录技术、阅读与生活"
+  author = "omnifj"
   keywords = ["技术博客", "omnifj", "编程", "软件工程"]
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  TocOpen = false
+  since = 2026
+  github = "https://github.com/omnifj"
+  email = "omnivue666@gmail.com"
 
-[params.assets]
-  favicon = "favicon.svg"
-  favicon16x16 = "favicon.svg"
-  favicon32x32 = "favicon.svg"
-  apple_touch_icon = "favicon.svg"
-  safari_pinned_tab = "favicon.svg"
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/"
+  weight = 10
+[[menu.main]]
+  identifier = "categories"
+  name = "分类"
+  url = "/categories/"
+  weight = 20
+[[menu.main]]
+  identifier = "works"
+  name = "作品"
+  url = "/works/"
+  weight = 30
+[[menu.main]]
+  identifier = "archives"
+  name = "归档"
+  url = "/archives/"
+  weight = 40
+[[menu.main]]
+  identifier = "friends"
+  name = "链接"
+  url = "/friends/"
+  weight = 50
+[[menu.main]]
+  identifier = "search"
+  name = "搜索"
+  url = "/search/"
+  weight = 60
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 70
 
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/omnifj"
-
-[[params.socialIcons]]
-  name = "email"
-  url = "mailto:omnivue666@gmail.com"
-
-[languages]
-  [languages.zh]
-    locale = "zh-CN"
-    label = "简体中文"
-    weight = 1
-    title = "omnifj's Blog"
-
-    [languages.zh.params]
-      description = "记录技术、阅读与生活"
-      author = "omnifj"
-
-    [languages.zh.params.homeInfoParams]
-      Title = "欢迎来到我的博客"
-      Content = "这里记录技术、阅读与生活。"
-
-    [languages.zh.menu]
-      [[languages.zh.menu.main]]
-        identifier = "posts"
-        name = "文章"
-        url = "/posts/"
-        weight = 10
-      [[languages.zh.menu.main]]
-        identifier = "archives"
-        name = "归档"
-        url = "/archives/"
-        weight = 15
-      [[languages.zh.menu.main]]
-        identifier = "tags"
-        name = "标签"
-        url = "/tags/"
-        weight = 20
-      [[languages.zh.menu.main]]
-        identifier = "search"
-        name = "搜索"
-        url = "/search/"
-        weight = 25
-      [[languages.zh.menu.main]]
-        identifier = "about"
-        name = "关于"
-        url = "/about/"
-        weight = 30
-      [[languages.zh.menu.main]]
-        identifier = "friends"
-        name = "链接"
-        url = "/friends/"
-        weight = 40
-
-  [languages.en]
-    locale = "en-US"
-    label = "English"
-    weight = 2
-    title = "omnifj's Blog"
-
-    [languages.en.params]
-      description = "Tech, reading and life"
-      author = "omnifj"
-
-    [languages.en.params.homeInfoParams]
-      Title = "Welcome to my blog"
-      Content = "Notes on tech, reading and life."
-
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "posts"
-        name = "Posts"
-        url = "/posts/"
-        weight = 10
-      [[languages.en.menu.main]]
-        identifier = "archives"
-        name = "Archives"
-        url = "/archives/"
-        weight = 15
-      [[languages.en.menu.main]]
-        identifier = "tags"
-        name = "Tags"
-        url = "/tags/"
-        weight = 20
-      [[languages.en.menu.main]]
-        identifier = "search"
-        name = "Search"
-        url = "/search/"
-        weight = 25
-      [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about/"
-        weight = 30
-      [[languages.en.menu.main]]
-        identifier = "friends"
-        name = "Friends"
-        url = "/friends/"
-        weight = 40
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
