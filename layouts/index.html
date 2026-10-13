@@ -1,0 +1,127 @@
+{{ define "main" }}
+{{- $posts := where site.RegularPages "Type" "posts" -}}
+{{- $categories := site.Taxonomies.categories -}}
+<section class="home-hero">
+  <div class="container-wide hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span> TECHNICAL FIELD NOTES · SINCE {{ site.Params.since | default 2026 }}</p>
+      <h1>
+        <span>{{ site.Params.heroLine1 | default site.Title }}</span>
+        <span>{{ site.Params.heroLine2 | default "。" }}</span>
+      </h1>
+      <p class="hero-lede">{{ site.Params.description }}</p>
+      <div class="hero-actions">
+        <a href="#latest" class="button button-primary">开始阅读 <span>↓</span></a>
+        <a href="{{ "/about/" | relURL }}" class="button button-quiet">认识作者 <span>↗</span></a>
+      </div>
+    </div>
+
+    <aside class="hero-index" aria-label="博客索引">
+      <div class="hero-index-head">
+        <span>INDEX / {{ now.Year }}</span>
+        <span class="writing-status"><i></i> 持续记录</span>
+      </div>
+      <dl class="hero-stats">
+        <div>
+          <dt>{{ len $posts }}</dt>
+          <dd>篇技术札记</dd>
+        </div>
+        <div>
+          <dt>{{ len $categories }}</dt>
+          <dd>个研究主题</dd>
+        </div>
+      </dl>
+      {{- with index $posts 0 }}
+        <div class="latest-note">
+          <div class="latest-note-head">
+            <span>LATEST NOTE</span>
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006.01.02" }}</time>
+          </div>
+          <a href="{{ .RelPermalink }}">
+            <span>{{ .Title }}</span>
+            <span class="latest-note-arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="latest-note-meta">
+            {{- with .Params.categories }}
+              <span>#{{ index . 0 }}</span>
+            {{- end }}
+            <span>{{ .ReadingTime }} MIN READ</span>
+          </div>
+        </div>
+      {{- end }}
+      <svg class="wind-sketch" viewBox="0 0 360 120" aria-hidden="true">
+        <path d="M8 72c72-65 153-70 230-29 43 23 78 22 114-10"/>
+        <path d="M4 94c88-42 169-37 229 2 38 25 75 24 120-9"/>
+        <path d="M96 113c45-16 88-11 127 13"/>
+      </svg>
+    </aside>
+  </div>
+</section>
+
+{{- if $categories }}
+<nav class="topic-strip" aria-label="文章主题">
+  <div class="container-wide">
+    <span class="topic-strip-label">BROWSE BY TOPIC</span>
+    <div class="topic-links">
+      {{- range $categories.ByCount.Reverse }}
+        <a href="{{ "/categories/" | relURL }}#{{ .Page.Slug | urlize }}">
+          #{{ .Page.Title }} <small>{{ .Count }}</small>
+        </a>
+      {{- end }}
+    </div>
+  </div>
+</nav>
+{{- end }}
+
+{{- $featured := where $posts "Params.featured" true -}}
+{{- if not $featured }}{{ $featured = first 2 $posts }}{{ end -}}
+{{- if $featured }}
+<section class="home-section container-wide">
+  <header class="section-heading">
+    <div>
+      <p>EDITOR'S PICK</p>
+      <h2>值得先读</h2>
+    </div>
+    <span>{{ len $featured }} NOTES</span>
+  </header>
+  <div class="featured-grid">
+    {{- range $index, $post := first 2 $featured }}
+      <a href="{{ .RelPermalink }}" class="featured-card">
+        <span class="featured-number">{{ printf "%02d" (add $index 1) }}</span>
+        <div class="featured-content">
+          <div class="featured-meta">
+            {{- with .Params.categories }}
+              <span>{{ index . 0 }}</span>
+            {{- end }}
+            <span>{{ .ReadingTime }} MIN READ</span>
+          </div>
+          <h3>{{ .Title }}</h3>
+          {{- with .Params.description }}
+            <p>{{ . }}</p>
+          {{- end }}
+        </div>
+        <span class="featured-arrow" aria-hidden="true">↗</span>
+      </a>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+<section class="home-section latest-section container-wide" id="latest">
+  <header class="section-heading">
+    <div>
+      <p>RECENT DISPATCHES</p>
+      <h2>最近写下的</h2>
+    </div>
+    <span>{{ len $posts }} NOTES / TOTAL</span>
+  </header>
+  <div class="post-rows">
+    {{- range $index, $post := $posts }}
+      {{ partial "post-row.html" (dict "page" $post "index" $index) }}
+    {{- end }}
+  </div>
+  <div class="section-end">
+    <a href="{{ "/categories/" | relURL }}">查看完整主题索引 <span>→</span></a>
+  </div>
+</section>
+{{ end }}

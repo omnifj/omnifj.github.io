@@ -21,6 +21,8 @@ paginate = 8
   since = 2026
   github = "https://github.com/omnifj"
   email = "omnivue666@gmail.com"
+  heroLine1 = "omni"
+  heroLine2 = "fj。"
 
 [[menu.main]]
   identifier = "posts"
