@@ -1,0 +1,28 @@
+<nav class="navbar" id="navbar">
+  <div class="container-wide navbar-inner">
+    <a href="{{ site.BaseURL }}" class="logo" aria-label="{{ site.Title }}首页">
+      <img src="{{ "favicon.svg" | relURL }}" alt="" class="logo-mark">
+      <span class="logo-copy">
+        <strong>{{ site.Title }}</strong>
+        <small>{{ site.Params.author | upper }} / FIELD NOTES</small>
+      </span>
+    </a>
+    <button
+      class="menu-toggle"
+      id="menu-toggle"
+      type="button"
+      aria-label="打开导航"
+      aria-expanded="false"
+      aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      {{- range site.Menus.main }}
+      <li><a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} class="active"{{ end }}>{{ .Name }}</a></li>
+      {{- end }}
+      {{- with site.Params.github }}
+      <li><a href="{{ . }}" target="_blank" rel="noreferrer">GitHub ↗</a></li>
+      {{- end }}
+    </ul>
+  </div>
+</nav>

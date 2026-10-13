@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode | default "zh-CN" }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="progress-bar" id="progress-bar"></div>
+  {{ partial "site-header.html" . }}
+  <main class="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <button class="back-to-top" id="back-to-top" aria-label="回到顶部">↟</button>
+  {{ partial "site-footer.html" . }}
+  {{- $js := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</body>
+</html>

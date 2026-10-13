@@ -1,0 +1,22 @@
+<footer class="footer">
+  <div class="container-wide footer-grid">
+    <div class="footer-brand">
+      <img src="{{ "favicon.svg" | relURL }}" alt="">
+      <div>
+        <strong>{{ site.Title }}</strong>
+        <p>{{ site.Params.description }}</p>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-links">
+        {{- range site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- end }}
+        {{- with site.Params.github }}
+        <a href="{{ . }}" target="_blank" rel="noreferrer">GitHub ↗</a>
+        {{- end }}
+      </div>
+      <p>© {{ now.Year }} {{ site.Params.author }} · Built with Hugo</p>
+    </div>
+  </div>
+</footer>
