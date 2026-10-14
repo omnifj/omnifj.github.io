@@ -1,0 +1,83 @@
+{{ define "main" }}
+<div class="post-shell container-wide">
+  <div class="post-topline">
+    <a href="{{ site.BaseURL }}">← 全部文章</a>
+    <div>
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006.01.02" }}</time>
+      {{- with .Params.categories }}
+        <span>/</span>
+        <span>{{ index . 0 }}</span>
+      {{- end }}
+    </div>
+  </div>
+
+  <article class="post">
+    <header class="post-header">
+      <p class="eyebrow"><span></span> NOTE{{ with .Params.categories }} / {{ index . 0 | upper }}{{ end }}</p>
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{- with .Params.description }}
+        <p class="post-deck">{{ . }}</p>
+      {{- end }}
+      <div class="post-meta">
+        <div class="post-author">
+          <img src="{{ "favicon.svg" | relURL }}" alt="{{ site.Params.author }}">
+          <span>
+            <small>AUTHOR</small>
+            <strong>{{ site.Params.author }}</strong>
+          </span>
+        </div>
+        <div class="post-facts">
+          <span>{{ .Date.Format "2006.01.02" }}</span>
+          <span>{{ .ReadingTime }} MIN READ</span>
+          <span>{{ .WordCount }} 字</span>
+        </div>
+      </div>
+      {{- with .Params.tags }}
+        <div class="post-tag-list">
+          {{- range . }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+          {{- end }}
+        </div>
+      {{- end }}
+    </header>
+
+    {{- with .TableOfContents }}
+      {{- if ne . "<nav id=\"TableOfContents\"></nav>" }}
+      <aside class="toc-wrapper" aria-label="文章目录">
+        <nav class="toc">
+          <p>CONTENTS</p>
+          {{ . }}
+        </nav>
+      </aside>
+      {{- end }}
+    {{- end }}
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+    <nav class="post-nav" aria-label="文章导航">
+      {{- with .PrevInSection }}
+        <a href="{{ .RelPermalink }}">
+          <small>← PREV</small>
+          <span>{{ .Title }}</span>
+        </a>
+      {{- else }}<span></span>{{ end }}
+      {{- with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="next">
+          <small>NEXT →</small>
+          <span>{{ .Title }}</span>
+        </a>
+      {{- end }}
+    </nav>
+
+    <div class="post-signoff">
+      <img src="{{ "favicon.svg" | relURL }}" alt="">
+      <div>
+        <strong>感谢读到这里。</strong>
+        <p>如果这篇札记对你有帮助，欢迎通过邮件与我交流。</p>
+      </div>
+    </div>
+  </article>
+</div>
+{{ end }}

@@ -1,6 +1,6 @@
 baseURL = "https://omnifj.github.io/"
 title = "omnifj"
-languageCode = "zh-CN"
+locale = "zh-CN"
 defaultContentLanguage = "zh"
 enableRobotsTXT = true
 enableGitInfo = true
