@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="listing-hero container-wide">
+  <p class="eyebrow"><span></span> {{ .Section | upper }}</p>
+  <div class="listing-title">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.description | default (printf "共 %d 篇。" (len .Pages)) }}</p>
+  </div>
+</section>
+
+<div class="container-wide listing-body">
+  <div class="post-rows">
+    {{- range $index, $post := .Pages }}
+      {{ partial "post-row.html" (dict "page" $post "index" $index) }}
+    {{- end }}
+  </div>
+</div>
+{{ end }}

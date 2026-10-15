@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{- $taxonomy := .Data.Terms -}}
+<section class="listing-hero container-wide">
+  <p class="eyebrow"><span></span> TOPIC INDEX</p>
+  <div class="listing-title">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.description | default "按主题浏览全部文章，找到你感兴趣的方向。" }}</p>
+  </div>
+</section>
+
+<div class="container-wide">
+  <div class="category-index">
+    {{- range $taxonomy.ByCount.Reverse }}
+      <a href="#{{ .Page.Slug | urlize }}" class="category-index-card">
+        <span>TOPIC</span>
+        <i aria-hidden="true">↗</i>
+        <strong>#{{ .Page.Title }}</strong>
+        <small>{{ .Count }} NOTES</small>
+      </a>
+    {{- end }}
+  </div>
+</div>
+
+<div class="category-sections container-wide">
+  {{- range $index, $term := $taxonomy.Alphabetical }}
+    <section class="category-section" id="{{ .Page.Slug | urlize }}">
+      <header class="category-header">
+        <span class="category-number">{{ printf "%02d" (add $index 1) }}</span>
+        <h2>#{{ .Page.Title }}</h2>
+        <span class="category-count">{{ .Count }} NOTES</span>
+      </header>
+      <div class="post-rows">
+        {{- range $i, $post := .Pages }}
+          {{ partial "post-row.html" (dict "page" $post "index" $i) }}
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+</div>
+{{ end }}

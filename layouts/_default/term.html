@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="listing-hero container-wide">
+  <p class="eyebrow"><span></span> {{ .Data.Singular | upper }}</p>
+  <div class="listing-title">
+    <h1>#{{ .Title }}</h1>
+    <p>{{ .Params.description | default (printf "该主题下共 %d 篇文章。" (len .Pages)) }}</p>
+  </div>
+</section>
+
+<div class="container-wide listing-body">
+  <div class="post-rows">
+    {{- range $index, $post := .Pages }}
+      {{ partial "post-row.html" (dict "page" $post "index" $index) }}
+    {{- end }}
+  </div>
+  <div class="section-end">
+    <a href="{{ (printf "/%s/" .Data.Plural) | relURL }}">← 返回{{ .Data.Plural | default "分类" }}索引</a>
+  </div>
+</div>
+{{ end }}
