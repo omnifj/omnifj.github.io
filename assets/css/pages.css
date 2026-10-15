@@ -127,6 +127,14 @@
   line-height: 1;
 }
 
+.archive-year {
+  padding-top: 4rem;
+}
+
+.archive-year:first-child {
+  padding-top: 0;
+}
+
 @media (max-width: 900px) {
   .listing-title {
     grid-template-columns: 1fr;

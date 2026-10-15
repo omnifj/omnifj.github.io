@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{- $posts := where site.RegularPages "Type" "posts" -}}
+<section class="listing-hero container-wide">
+  <p class="eyebrow"><span></span> ARCHIVES</p>
+  <div class="listing-title">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.description | default "按时间排列的所有文章。" }}</p>
+  </div>
+</section>
+
+<div class="container-wide listing-body">
+  {{- range $posts.GroupByDate "2006" }}
+    <section class="archive-year">
+      <header class="category-header">
+        <span class="category-number">{{ len .Pages }}</span>
+        <h2>{{ .Key }}</h2>
+        <span class="category-count">{{ len .Pages }} NOTES</span>
+      </header>
+      <div class="post-rows">
+        {{- range $i, $post := .Pages }}
+          {{ partial "post-row.html" (dict "page" $post "index" $i) }}
+        {{- end }}
+      </div>
+    </section>
+  {{- end }}
+</div>
+{{ end }}
