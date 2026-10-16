@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="listing-hero container-wide">
+  <p class="eyebrow"><span></span> FRIENDS</p>
+  <div class="listing-title">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.description | default "朋友们和值得推荐的站点。" }}</p>
+  </div>
+</section>
+
+<div class="container-wide listing-body">
+  <div class="friends-grid">
+    {{- range site.Data.friends }}
+      <a class="friend-card" href="{{ .url }}" target="_blank" rel="noopener">
+        <div class="friend-card-head">
+          <span>LINK</span>
+          <i aria-hidden="true">↗</i>
+        </div>
+        <div class="friend-card-body">
+          {{- if .avatar }}
+            <img class="friend-avatar" src="{{ .avatar }}" alt="{{ .name }}" loading="lazy">
+          {{- else }}
+            <span class="friend-avatar friend-avatar-fallback">{{ substr .name 0 1 }}</span>
+          {{- end }}
+          <strong>{{ .name }}</strong>
+        </div>
+        {{- with .description }}<p>{{ . }}</p>{{ end }}
+        {{- with .note }}<small>{{ . }}</small>{{ end }}
+      </a>
+    {{- end }}
+  </div>
+  {{- with .Content }}
+    <div class="page-content friends-content">{{ . }}</div>
+  {{- end }}
+</div>
+{{ end }}

@@ -339,3 +339,95 @@
     flex-direction: column;
   }
 }
+
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+}
+
+.friend-card {
+  position: relative;
+  display: flex;
+  min-height: 210px;
+  padding: 1.2rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  flex-direction: column;
+  gap: 0.9rem;
+  transition:
+    box-shadow var(--ease),
+    transform var(--ease);
+}
+
+.friend-card:hover {
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: translate(-3px, -3px);
+}
+
+.friend-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+}
+
+.friend-card-head i {
+  font-style: normal;
+  transition:
+    color var(--ease),
+    transform var(--ease);
+}
+
+.friend-card:hover .friend-card-head i {
+  color: var(--red);
+  transform: translate(3px, -3px);
+}
+
+.friend-card-body {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.friend-avatar {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.friend-avatar-fallback {
+  display: grid;
+  place-items: center;
+  color: var(--paper);
+  background: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+}
+
+.friend-card-body strong {
+  font-size: 1.25rem;
+}
+
+.friend-card > p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.friend-card > small {
+  margin-top: auto;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+}
+
+.friends-content {
+  margin-top: 2.5rem;
+}
