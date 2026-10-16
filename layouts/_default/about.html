@@ -1,0 +1,62 @@
+{{ define "main" }}
+<div class="page-shell container-wide">
+  <header class="page-header">
+    <p class="eyebrow"><span></span> ABOUT</p>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <span class="about-card-number">01</span>
+      <p class="about-card-label">WHO AM I</p>
+      <h2>你好，我是 {{ site.Params.author }}</h2>
+      {{- with .Params.intro }}
+        <p class="about-card-text">{{ . }}</p>
+      {{- end }}
+      {{- with .Content }}
+        <div class="page-content">{{ . }}</div>
+      {{- end }}
+    </div>
+
+    <div class="about-card about-principle">
+      <span class="about-card-number">02</span>
+      <p class="about-card-label">PRINCIPLE</p>
+      <h2>写代码，也写文字</h2>
+      {{- with .Params.motto }}
+        <blockquote>{{ . }}</blockquote>
+      {{- end }}
+      <svg viewBox="0 0 360 120" aria-hidden="true">
+        <path d="M8 72c72-65 153-70 230-29 43 23 78 22 114-10"/>
+        <path d="M4 94c88-42 169-37 229 2 38 25 75 24 120-9"/>
+        <path d="M96 113c45-16 88-11 127 13"/>
+      </svg>
+    </div>
+
+    <div class="about-card">
+      <span class="about-card-number">03</span>
+      <p class="about-card-label">TECH STACK</p>
+      <h2>常用的工具与技术</h2>
+      <div class="tech-stack">
+        {{- range .Params.stack }}
+          <span>{{ . }}</span>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="about-card about-connect">
+      <span class="about-card-number">04</span>
+      <p class="about-card-label">CONNECT</p>
+      <h2>保持联系</h2>
+      <p>对我的文章或项目有任何想法，欢迎随时交流。</p>
+      <div class="connect-links">
+        {{- with site.Params.github }}
+          <a href="{{ . }}" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+        {{- end }}
+        {{- with site.Params.email }}
+          <a href="mailto:{{ . }}">Email <span>↗</span></a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
