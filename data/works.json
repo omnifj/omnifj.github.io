@@ -1,0 +1,14 @@
+[
+  {
+    "name": "omnifj.github.io",
+    "tagline": "把复杂技术，写成可以慢慢读懂的札记",
+    "description": "个人技术博客：基于 Hugo 的自研手札风格主题，GitHub Pages 托管，GitHub Actions 自动部署。",
+    "url": "https://omnifj.github.io",
+    "repo": "https://github.com/omnifj/omnifj.github.io",
+    "status": "持续维护",
+    "year": "2026",
+    "role": "独立开发",
+    "stack": ["Hugo", "CSS", "JavaScript", "GitHub Actions"],
+    "highlights": ["自研主题样式", "全文搜索", "自动部署", "响应式设计"]
+  }
+]

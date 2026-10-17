@@ -1,0 +1,92 @@
+{{ define "main" }}
+<section class="works-hero container-wide">
+  <div class="works-hero-copy">
+    <p class="eyebrow"><span></span> SELECTED WORKS</p>
+    <h1>{{ .Title }}<em>。</em></h1>
+  </div>
+  <aside class="works-hero-note">
+    <span>NOTE</span>
+    <p>{{ .Params.description | default "做的东西不多，但每一个都认真打磨。" }}</p>
+  </aside>
+</section>
+
+<div class="works-list container-wide">
+  {{- range $index, $work := site.Data.works }}
+    <article class="work-card">
+      <div class="work-card-head">
+        <span class="work-status"><i></i> {{ $work.status | default "进行中" }}</span>
+        <span>{{ printf "%02d" (add $index 1) }} / {{ $work.year }}</span>
+      </div>
+
+      <div class="work-copy">
+        <div class="work-brand">
+          <div>
+            <p>PROJECT</p>
+            <h2>{{ $work.name }}</h2>
+          </div>
+        </div>
+        <div>
+          {{- with $work.tagline }}
+            <p class="work-tagline">{{ . }}</p>
+          {{- end }}
+          {{- with $work.description }}
+            <p class="work-summary">{{ . }}</p>
+          {{- end }}
+          <dl class="work-facts">
+            <div>
+              <dt>ROLE</dt>
+              <dd>{{ $work.role | default "—" }}</dd>
+            </div>
+            <div>
+              <dt>YEAR</dt>
+              <dd>{{ $work.year | default "—" }}</dd>
+            </div>
+            <div>
+              <dt>STATUS</dt>
+              <dd>{{ $work.status | default "—" }}</dd>
+            </div>
+          </dl>
+          {{- with $work.url }}
+            <a href="{{ . }}" target="_blank" rel="noreferrer" class="button button-primary work-cta">访问项目 <span>↗</span></a>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="work-card-foot">
+        {{- with $work.highlights }}
+          <div class="work-highlights">
+            <p>HIGHLIGHTS</p>
+            <ul>
+              {{- range $i, $h := . }}
+                <li><span>{{ printf "%02d" (add $i 1) }}</span>{{ $h }}</li>
+              {{- end }}
+            </ul>
+          </div>
+        {{- end }}
+        {{- with $work.stack }}
+          <div class="work-stack">
+            <p>STACK</p>
+            <ul>
+              {{- range . }}
+                <li>{{ . }}</li>
+              {{- end }}
+            </ul>
+          </div>
+        {{- end }}
+      </div>
+    </article>
+  {{- end }}
+</div>
+
+{{- with site.Params.github }}
+<div class="container-wide">
+  <a href="{{ . }}?tab=repositories" target="_blank" rel="noreferrer" class="works-next">
+    <span>MORE ON GITHUB</span>
+    <div>
+      <h2>更多项目，在 GitHub 上</h2>
+      <p>实验性的想法和练习代码都放在那里。</p>
+    </div>
+  </a>
+</div>
+{{- end }}
+{{ end }}
