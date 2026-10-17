@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="page-shell container-wide">
+  <header class="page-header search-header">
+    <p class="eyebrow"><span></span> SEARCH</p>
+    <h1>{{ .Title }}</h1>
+    <div class="search-box">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="{{ .Params.placeholder | default "输入关键词搜索..." }}"
+        aria-label="搜索文章"
+        autocomplete="off">
+      <span id="search-count" class="search-count"></span>
+    </div>
+  </header>
+
+  <div class="search-results post-rows" id="search-results"></div>
+  <p class="search-empty" id="search-empty" hidden>没有找到匹配的文章。</p>
+</div>
+{{- $js := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

@@ -431,3 +431,43 @@
 .friends-content {
   margin-top: 2.5rem;
 }
+
+.search-header {
+  max-width: var(--reading);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.8rem 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.search-count {
+  flex: 0 0 auto;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+.search-empty {
+  margin-top: 2rem;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
