@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="error-page container-wide">
+  <div class="error-copy">
+    <p class="error-code">404</p>
+    <p class="eyebrow"><span></span> PAGE NOT FOUND</p>
+    <h1>迷路了。</h1>
+    <p>你要找的页面不存在，或者已经被移动。不如回到首页继续逛逛。</p>
+    <a href="{{ site.BaseURL }}" class="button button-primary">回到首页 <span>↗</span></a>
+  </div>
+  <svg class="error-wind" viewBox="0 0 360 120" aria-hidden="true">
+    <path d="M8 72c72-65 153-70 230-29 43 23 78 22 114-10"/>
+    <path d="M4 94c88-42 169-37 229 2 38 25 75 24 120-9"/>
+    <path d="M96 113c45-16 88-11 127 13"/>
+  </svg>
+</div>
+{{ end }}
