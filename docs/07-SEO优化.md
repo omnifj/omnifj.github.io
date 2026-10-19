@@ -4,29 +4,29 @@
 
 ## 一、已实施的优化
 
-### 1. 结构化元数据（PaperMod 内置，已确认开启）
+### 1. 结构化元数据（自研主题，`layouts/partials/head.html`）
 
 | 优化项 | 作用 | 实现方式 |
 |---|---|---|
-| Open Graph 标签 | 文章被分享到微信/微博/X 时显示标题、摘要、封面图卡片 | `hugo.toml` 中 `env = "production"` 确保渲染 |
-| Twitter Cards | X/Twitter 分享卡片 | 同上 |
-| Schema.org JSON-LD | 向搜索引擎声明「这是一篇文章、作者是谁、发布于何时」，可能获得富摘要展示 | 同上，自动读取 frontmatter |
-| Canonical 链接 | 防止重复内容分散权重，指明页面权威地址 | PaperMod 自动生成 |
+| Open Graph 标签 | 文章被分享到微信/微博/X 时显示标题、摘要卡片 | `head.html` 输出 og:title / og:description / og:type / og:url 等 |
+| Twitter Cards | X/Twitter 分享卡片 | `head.html` 输出 twitter:card / twitter:title / twitter:description |
+| Schema.org JSON-LD | 向搜索引擎声明「这是一篇文章、作者是谁、发布于何时」，可能获得富摘要展示 | `head.html` 输出：文章页为 BlogPosting（含发布时间、更新时间、作者），其他页为 WebSite |
+| Canonical 链接 | 防止重复内容分散权重，指明页面权威地址 | `head.html` 输出 `<link rel="canonical">` |
 
 ### 2. 站点级配置（hugo.toml）
 
 ```toml
 enableRobotsTXT = true      # 生成 robots.txt，引导爬虫
 enableGitInfo = true        # 用 git 提交时间作为 lastmod（文章更新时间），
-                            # 写入 sitemap，搜索引擎偏好有新鲜度信号的页面
+                            # 写入 sitemap 和 JSON-LD dateModified，
+                            # 搜索引擎偏好有新鲜度信号的页面
 
 [sitemap]
   changefreq = "weekly"     # 告知爬虫页面更新频率
   priority = 0.5
 
 [params]
-  env = "production"        # 强制输出 OG/Twitter/Schema 元数据（含本地构建）
-  keywords = [...]          # 站点级关键词，输出到 meta keywords 和 JSON-LD
+  keywords = [...]          # 站点级关键词，输出到 meta keywords
 ```
 
 ### 3. robots.txt（layouts/robots.txt）
@@ -106,10 +106,9 @@ description: "120~150 字的摘要，包含核心关键词，写清楚读者能�
 
 1. **系列化写作**：围绕一个主题写系列文章并互相链接，形成「主题权威」（Topical Authority）
 2. **解决具体问题**：标题即问题（如「Hugo 部署 GitHub Pages 失败的 5 个原因」），长尾搜索流量最精准
-3. **英文或双语摘要**：扩大受众范围
-4. **分发引流**：文章同步到掘金、知乎、Dev.to 等平台，文末注明「原文链接」指回本站，积累外链
-5. **保持稳定更新频率**：每周 1 篇优于每月突击 4 篇
-6. **衡量效果**：可在 `layouts/_partials/extend_head.html` 中加入 Google Analytics 或百度统计代码
+3. **分发引流**：文章同步到掘金、知乎、Dev.to 等平台，文末注明「原文链接」指回本站，积累外链
+4. **保持稳定更新频率**：每周 1 篇优于每月突击 4 篇
+5. **衡量效果**：可在 `layouts/partials/head.html` 中加入 Google Analytics 或百度统计代码
 
 ## 五、验证 SEO 是否生效
 
