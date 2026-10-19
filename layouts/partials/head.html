@@ -15,6 +15,25 @@
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="keywords" content="{{ delimit (default slice .Params.keywords | default site.Params.keywords) "," }}">
+{{- $jsonld := dict
+  "@context" "https://schema.org"
+  "@type" (cond .IsPage "BlogPosting" "WebSite")
+  "name" $title
+  "headline" $title
+  "description" $desc
+  "url" .Permalink
+  "author" (dict "@type" "Person" "name" site.Params.author)
+  "inLanguage" "zh-CN"
+-}}
+{{- if .IsPage }}
+  {{- $jsonld = merge $jsonld (dict "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+  {{- with .Params.keywords }}{{ $jsonld = merge $jsonld (dict "keywords" .) }}{{ end -}}
+{{- end }}
+<script type="application/ld+json">{{ $jsonld | jsonify | safeJS }}</script>
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{- $files := slice "css/base.css" "css/home.css" "css/post.css" "css/pages.css" -}}
