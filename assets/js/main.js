@@ -32,4 +32,30 @@
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   }
+
+  var heroWord = document.getElementById("hero-word");
+  if (heroWord) {
+    var reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    var words = (heroWord.getAttribute("data-words") || "")
+      .split("|")
+      .filter(Boolean);
+
+    if (!reduceMotion && words.length > 1) {
+      var wordIndex = 0;
+      setInterval(function () {
+        heroWord.classList.add("swap-out");
+        setTimeout(function () {
+          wordIndex = (wordIndex + 1) % words.length;
+          heroWord.textContent = words[wordIndex];
+          heroWord.classList.remove("swap-out");
+          heroWord.classList.add("swap-in");
+          setTimeout(function () {
+            heroWord.classList.remove("swap-in");
+          }, 450);
+        }, 330);
+      }, 2800);
+    }
+  }
 })();

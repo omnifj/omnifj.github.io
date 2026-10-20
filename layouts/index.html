@@ -5,9 +5,18 @@
   <div class="container-wide hero-grid">
     <div class="hero-copy">
       <p class="eyebrow"><span></span> TECHNICAL FIELD NOTES · SINCE {{ site.Params.since | default 2026 }}</p>
+      {{- $words := site.Params.heroWords | default (slice "坚持" "耐心" "热爱") -}}
       <h1>
-        <span>{{ site.Params.heroLine1 | default site.Title }}</span>
-        <span>{{ site.Params.heroLine2 | default "。" }}</span>
+        <span class="hero-alt" aria-hidden="true">
+          <span class="hero-alt-line">我是<span class="hero-accent">禾明</span>，</span>
+          <span class="hero-alt-line">寻求<span class="hero-accent">终极幸福</span>！</span>
+        </span>
+        <span class="hero-default">
+          <span class="hero-line">
+            <span id="hero-word" class="hero-word" data-words="{{ delimit $words "|" }}">{{ index $words 0 }}</span><span class="hero-comma">，</span>
+          </span>
+          <span class="hero-suffix">是生活的答案</span>
+        </span>
       </h1>
       <p class="hero-lede">{{ site.Params.description }}</p>
       <div class="hero-actions">
