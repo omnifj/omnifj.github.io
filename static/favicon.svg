@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2e2e33"/>
-  <text x="32" y="44" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" text-anchor="middle">O</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <rect width="64" height="64" fill="#100f0f"/>
+  <path fill="#d14d41" fill-rule="evenodd" d="M16 16h40v40H16zM24 24v24h24V24z"/>
+  <path fill="#fffcf0" fill-rule="evenodd" d="M12 12h40v40H12zM20 20v24h24V20z"/>
+  <rect x="12" y="12" width="8" height="8" fill="#fffcf0"/>
 </svg>
