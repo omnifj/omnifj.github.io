@@ -37,9 +37,9 @@
   position: relative;
   max-width: 7em;
   margin-top: 1rem;
-  padding-top: 2.2rem;
+  padding-top: 3.6rem;
   font-family: var(--font-display);
-  font-size: clamp(9.6rem, 18vw, 17rem);
+  font-size: clamp(7.2rem, 13.5vw, 12.75rem);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 0.9;
@@ -85,7 +85,7 @@
   display: block;
   margin-left: 0.1em;
   color: var(--ink);
-  font-size: 0.315em;
+  font-size: 0.42em;
   letter-spacing: 0.04em;
   line-height: 1.3;
 }
@@ -330,22 +330,12 @@
 
 .wind-sketch {
   position: absolute;
-  z-index: 0;
-  right: -0.8rem;
-  bottom: -1.3rem;
-  width: 56%;
+  z-index: 2;
+  right: 0.9rem;
+  bottom: 0.7rem;
   color: var(--red);
-  opacity: 0.14;
-  pointer-events: none;
-}
-
-.wind-sketch path,
-.error-wind path {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: butt;
-  stroke-linejoin: miter;
-  stroke-width: 6;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  opacity: 0.16;
 }
 
 .topic-strip {
@@ -720,7 +710,7 @@
 
   .hero-copy h1 {
     padding-top: 0.5rem;
-    font-size: clamp(8.5rem, 40vw, 9.6rem);
+    font-size: clamp(6.4rem, 30vw, 7.2rem);
   }
 
   .hero-copy h1 .hero-alt {
@@ -732,7 +722,7 @@
   }
 
   .hero-copy h1 .hero-suffix {
-    font-size: 0.255em;
+    font-size: 0.34em;
     letter-spacing: 0.02em;
   }
 
@@ -802,10 +792,6 @@
   .latest-note-arrow {
     width: 32px;
     height: 32px;
-  }
-
-  .wind-sketch {
-    width: 68%;
   }
 
   .section-heading {

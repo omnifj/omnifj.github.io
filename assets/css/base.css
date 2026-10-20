@@ -188,7 +188,18 @@ svg {
       var(--red-dark) 8px 12px
     );
   box-shadow: 0 2px 0 var(--ink);
-  transition: width 80ms steps(2, end);
+  transition: width 120ms linear;
+  will-change: width;
+}
+
+.watermark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 }
 
 .navbar {
