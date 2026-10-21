@@ -33,6 +33,43 @@
     });
   }
 
+  var heroIndex = document.querySelector(".hero-index");
+  if (heroIndex) {
+    var statusText = heroIndex.querySelector(".writing-status-text");
+    if (statusText) {
+      var idleStatus = statusText.textContent;
+      var alertStatus = statusText.getAttribute("data-alert") || idleStatus;
+      var isHovering = false;
+      var isFocused = false;
+      var syncStatus = function () {
+        statusText.textContent =
+          isHovering || isFocused ? alertStatus : idleStatus;
+      };
+
+      heroIndex.addEventListener("mouseenter", function () {
+        isHovering = true;
+        syncStatus();
+      });
+
+      heroIndex.addEventListener("mouseleave", function () {
+        isHovering = false;
+        syncStatus();
+      });
+
+      heroIndex.addEventListener("focusin", function () {
+        isFocused = true;
+        syncStatus();
+      });
+
+      heroIndex.addEventListener("focusout", function (event) {
+        if (!heroIndex.contains(event.relatedTarget)) {
+          isFocused = false;
+          syncStatus();
+        }
+      });
+    }
+  }
+
   var heroWord = document.getElementById("hero-word");
   if (heroWord) {
     var reduceMotion = window.matchMedia(
