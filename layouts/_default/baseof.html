@@ -9,7 +9,13 @@
   <main class="main">
     {{ block "main" . }}{{ end }}
   </main>
-  <button class="back-to-top" id="back-to-top" aria-label="回到顶部">↟</button>
+  <button class="back-to-top" id="back-to-top" aria-label="回到顶部">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
+      <path d="M3 6 8 2l5 4" />
+      <path d="M3 10 8 6l5 4" />
+      <path d="M3 14 8 10l5 4" />
+    </svg>
+  </button>
   {{ partial "site-footer.html" . }}
   {{- $js := resources.Get "js/main.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

@@ -213,22 +213,6 @@ svg {
     box-shadow var(--ease);
 }
 
-.navbar::after {
-  position: absolute;
-  right: 0;
-  bottom: -8px;
-  left: 0;
-  height: 6px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      var(--paper-deep) 0 8px,
-      transparent 8px 16px
-    );
-  content: "";
-  pointer-events: none;
-}
-
 .navbar.scrolled {
   background: var(--paper-soft);
   box-shadow: 0 4px 0 var(--paper-deep);
@@ -536,7 +520,6 @@ svg {
   color: var(--paper);
   background: var(--ink);
   box-shadow: 4px 4px 0 var(--red);
-  font-family: var(--font-mono);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
@@ -548,6 +531,12 @@ svg {
     opacity var(--ease),
     transform var(--ease),
     visibility var(--ease);
+}
+
+.back-to-top svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 
 .back-to-top.visible {
